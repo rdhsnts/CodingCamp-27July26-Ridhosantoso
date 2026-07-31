@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hari Ini · Life Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Decorative background blobs -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+
+  <div class="dashboard">
+
+    <!-- ===== Header / Greeting ===== -->
+    <header class="card greeting-card tape tape-pink">
+      <div class="greeting-top">
+        <div class="greeting-text">
+          <p class="eyebrow" id="dateLabel">Loading date…</p>
+          <h1 id="greetingHeading">
+            <span id="greetingWord">Hello</span><span id="greetingComma">,</span>
+            <button class="name-btn" id="nameBtn" title="Set your name">friend ✎</button>
+          </h1>
+        </div>
+        <div class="header-controls">
+          <div class="clock" id="clock">--:--</div>
+          <button class="theme-toggle" id="themeToggle" title="Toggle light / dark mode">
+            <span id="themeIcon">🌙</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== Focus Timer ===== -->
+    <section class="card timer-card tape tape-mint">
+      <h2 class="card-title">🍅 Focus Timer</h2>
+
+      <div class="timer-body">
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 160 160">
+            <circle class="ring-track" cx="80" cy="80" r="70"></circle>
+            <circle class="ring-progress" id="ringProgress" cx="80" cy="80" r="70"></circle>
+          </svg>
+          <div class="ring-time" id="timerDisplay">25:00</div>
+        </div>
+
+        <div class="timer-controls">
+          <button class="btn btn-primary" id="startBtn">Start</button>
+          <button class="btn btn-secondary" id="stopBtn">Pause</button>
+          <button class="btn btn-ghost" id="resetBtn">Reset</button>
+        </div>
+
+        <div class="timer-settings">
+          <label for="pomodoroLength">Session length</label>
+          <div class="length-row">
+            <input type="range" id="pomodoroLength" min="5" max="60" step="5" value="25">
+            <span id="pomodoroLengthLabel">25 min</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Quick Links ===== -->
+    <section class="card links-card tape tape-peach">
+      <h2 class="card-title">🔗 Quick Links</h2>
+      <div class="links-grid" id="linksGrid"></div>
+      <button class="btn btn-outline add-link-btn" id="addLinkBtn">+ Add link</button>
+    </section>
+
+    <!-- ===== To-Do List ===== -->
+    <section class="card todo-card tape tape-lavender">
+      <div class="todo-head">
+        <h2 class="card-title">📝 To-Do List</h2>
+        <div class="todo-meta" id="todoMeta">0 tasks</div>
+      </div>
+
+      <form class="todo-form" id="todoForm">
+        <input type="text" id="todoInput" placeholder="Add a task…" maxlength="120" autocomplete="off">
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+
+      <div class="todo-toolbar">
+        <div class="filter-group" id="filterGroup">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="active">Active</button>
+          <button class="chip" data-filter="done">Done</button>
+        </div>
+        <select id="sortSelect" class="sort-select">
+          <option value="created">Newest first</option>
+          <option value="alpha">A → Z</option>
+          <option value="done">Done last</option>
+        </select>
+      </div>
+
+      <ul class="todo-list" id="todoList"></ul>
+      <p class="empty-state" id="emptyState">Nothing here yet — add your first task above 🌱</p>
+    </section>
+
+    <footer class="dash-footer">Made with 💗 · your data stays on this device</footer>
+  </div>
+
+  <!-- ===== Name modal ===== -->
+  <div class="modal-overlay" id="nameModalOverlay">
+    <div class="modal">
+      <h3>What should we call you?</h3>
+      <input type="text" id="nameInput" maxlength="24" placeholder="e.g. Dudul">
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="nameCancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="nameSaveBtn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Link modal ===== -->
+  <div class="modal-overlay" id="linkModalOverlay">
+    <div class="modal">
+      <h3>Add a quick link</h3>
+      <input type="text" id="linkNameInput" maxlength="24" placeholder="Label (e.g. Gmail)">
+      <input type="text" id="linkUrlInput" maxlength="200" placeholder="https://…">
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="linkCancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="linkSaveBtn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
